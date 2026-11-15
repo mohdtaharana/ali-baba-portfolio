@@ -1,0 +1,112 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #f7f7f5;
+  --ink: #111111;
+  --mute: #9a9a9a;
+  --sub: #7b7b7b;
+}
+
+.dark {
+  --bg: #0b0b0d;
+  --ink: #f3f3f0;
+  --mute: #76767a;
+  --sub: #a0a0a6;
+}
+
+@layer base {
+  html,
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+}
+
+.font-mono-tabular {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.cta-glow-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.cta-glow-wrap::before {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: -6px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    #ffcf5a,
+    #7dffa8,
+    #5ad7ff,
+    #9b7bff,
+    #ff6fd8,
+    #ffb36b
+  );
+  filter: blur(9px);
+  opacity: 0.85;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dark .cta-glow-wrap::before {
+  opacity: 0.72;
+}
+
+.cta-glow-wrap:hover::before,
+.cta-glow-wrap:focus-within::before {
+  opacity: 1;
+  filter: blur(12px);
+  transform: translateY(3px);
+}
+
+.cta-pill {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.cta-glow-wrap:hover .cta-pill {
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body,
+  .cta-glow-wrap::before,
+  .cta-pill {
+    transition: none;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Hide native browser scrollbar in favor of interactive PixelScrollbar */
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
