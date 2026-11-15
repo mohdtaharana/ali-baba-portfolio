@@ -28,7 +28,7 @@ export const CV_PROFILE = {
   phone: '03151021497',
   email: 'ab3669736@gmail.com',
   location: 'Karachi, Pakistan',
-  pdfPath: '/assets/aistudio/ali-baba_4da651d0.pdf',
+  pdfPath: '/assets/docs/ali-baba_4da651d0.pdf',
   summary:
     'Motivated Computer Science student with a strong interest in Artificial Intelligence, Data Science, and Machine Learning. Skilled in Python, Java, and data analysis with hands-on experience in academic projects and data preprocessing. Currently enhancing technical expertise through the Saylani Mass IT Training Program and eager to apply analytical and problem-solving skills to real-world data-driven challenges.',
   education: [
